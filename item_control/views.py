@@ -30,7 +30,7 @@ def initiate_item(request: Request):
                     name=serializer.validated_data["name"],  # type: ignore
                     description=serializer.validated_data["description"],  # type: ignore
                     price=serializer.validated_data["price"],  # type: ignore
-                    seller_id=user,
+                    seller=user,
                 )
                 item_obj.save()
                 form.save()
@@ -38,6 +38,7 @@ def initiate_item(request: Request):
                     {
                         "success": "Item registered successfully",
                         "data": serializer.data,
+                        "seller": user.name,
                     },
                     status=status.HTTP_201_CREATED,
                 )

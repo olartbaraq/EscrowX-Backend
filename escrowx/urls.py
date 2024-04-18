@@ -19,6 +19,7 @@ from django.contrib import admin  # type: ignore
 from django.urls import path  # type: ignore
 
 from item_control.views import initiate_item
+from transaction_control.views import transaction
 from user_control.views import login, register_user
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path("auth/register/", register_user, name="register"),
     path("auth/login/", login, name="login"),
     path("seller/item/", initiate_item, name="initiate_item"),
+    path("transaction/", transaction, name="transaction"),
 ]

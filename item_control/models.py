@@ -9,15 +9,13 @@ class Item(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     description = models.TextField(max_length=1000)
     image = CloudinaryField("image")
-    seller_id = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="seller_id"
-    )
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="seller_id")
     price = models.CharField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.seller_id.name} - {self.name}"
+        return f"{self.seller.name} - {self.name}"
 
     class Meta:
         ordering = ("-created_at",)
