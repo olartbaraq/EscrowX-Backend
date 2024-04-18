@@ -11,7 +11,7 @@ class CustomUserManager(BaseUserManager):
         BaseUserManager (_type_): _description_
     """
 
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, email: str, password: str, **extra_fields):
         if not email:
             raise ValueError("Email address is required")
 
@@ -25,9 +25,10 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, password, **extra_fields):
+    def create_superuser(self, email: str, password: str, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("name", "Admin")
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError("Superuser must have is_staff to be True")
@@ -57,7 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             "unique": "This email already exists",
         },
     )
-    name = models.CharField(max_length=500, blank=False, null=False, default="None")
+    name = models.CharField(max_length=500, blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)

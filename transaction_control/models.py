@@ -7,6 +7,7 @@ from item_control.models import Item
 
 status = (
     ("Pending", "Pending"),
+    ("Processing", "Processing"),
     ("Cancelled", "Cancelled"),
     ("Completed", "Completed"),
 )

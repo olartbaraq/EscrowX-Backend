@@ -37,8 +37,12 @@ def initiate_item(request: Request):
                 return Response(
                     {
                         "success": "Item registered successfully",
-                        "data": serializer.data,
-                        "seller": user.name,
+                        "data": {
+                            "seller": user.name,
+                            "name": serializer.data.get("name"),  # type: ignore
+                            "description": serializer.data.get("description"),  # type: ignore
+                            "price": serializer.data.get("price"),  # type: ignore
+                        },
                     },
                     status=status.HTTP_201_CREATED,
                 )

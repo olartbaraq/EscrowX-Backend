@@ -10,7 +10,6 @@ class TransactionSerializer(serializers.ModelSerializer):
             "amount",
             "status",
             "buyer",
-            "seller",
             "item",
             "created_at",
         ]
