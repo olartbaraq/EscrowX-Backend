@@ -10,7 +10,8 @@ class TransactionSerializer(serializers.ModelSerializer):
             "amount",
             "status",
             "buyer",
+            "seller",
             "item",
             "created_at",
         ]
-        read_only_fields = ("id", "created_at", "item")
+        read_only_fields = ("id", "created_at", "item", "seller")

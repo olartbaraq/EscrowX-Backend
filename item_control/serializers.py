@@ -10,7 +10,8 @@ class ItemSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "image",
             "price",
             "created_at",
         ]
-        read_only_fields = ("id", "created_at", "seller")
+        read_only_fields = ("id", "created_at", "image", "seller")
